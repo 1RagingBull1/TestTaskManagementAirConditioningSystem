@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     TCPClient/TCPClient.cpp \
+    displayeddata.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     TCPClient/TCPClient.h \
+    displayeddata.h \
     mainwindow.h
 
 FORMS += \
