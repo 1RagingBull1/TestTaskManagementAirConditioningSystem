@@ -6,6 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow), tcpClient(new TCPClient())
 {
     ui->setupUi(this);
+
+//    temperature = new DisplayedData("temperature",ui->comboBox_2, ui->label_4,this);
+//    connect(temperature, &DisplayedData::sigSaveSettings, this, &MainWindow::SlotSaveSettings);
+//    temperature->SlotRefreshData(5);
+
+
     tcpClient->connectToServer();
 
 
@@ -29,25 +35,9 @@ MainWindow::~MainWindow()
     delete  tcpClient;
 }
 
-void MainWindow::SaveSettings(QString key, int index)
+void MainWindow::SlotSaveSettings(QString key, int index)
 {
     settings->setValue(key, index);
-}
-
-void MainWindow::RecalculateValue()
-{
-
-}
-
-void MainWindow::ChangeScale()
-{
-
-}
-
-void MainWindow::on_comboBox_2_currentIndexChanged(int index)
-{
-    SaveSettings("temperature", index);
-
 }
 
 

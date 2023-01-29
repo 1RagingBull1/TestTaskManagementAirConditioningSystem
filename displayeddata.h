@@ -5,28 +5,29 @@
 #include <QLabel>
 #include <QComboBox>
 
+
 class DisplayedData : public QObject
 {
     Q_OBJECT
 public:
-    explicit DisplayedData(QObject *parent = nullptr);
+    DisplayedData(QString sNameParameter, QComboBox* sComboBox, QLabel* sLabel, QObject *parent = nullptr);
     ~DisplayedData();
 
-    void SetDisplayLabel(QLabel* label); // присваивается label в котором отображается значение параметра
-    void SetScaleCombobox(QComboBox* comboBox); //присвается всплывающий список в котором выбирается единица измерения
-    void RefreshData();
     int getRawData() const;
     void setRawData(int newRawData);
 
 
 
-    const QString &getNameParameter() const;
-    void setNameParameter(const QString &newNameParameter);
+    void setVecCoefScale(QVector<float> *newVecCoefScale);
 
 private:
-    int rawData; // содержит сырые данные полученные от иммитатора
+    int rawData = 0; // содержит сырые данные полученные от иммитатора
     QString nameParameter; // содержит наименование отображаемого параметра
-
+    QComboBox* scaleComboBox;
+    QLabel* displaylabel;
+    QVector<float>* vecCoefScale;
+public slots:
+    void SlotRefreshData(int indx);
 signals:
     void sigSaveSettings();
 

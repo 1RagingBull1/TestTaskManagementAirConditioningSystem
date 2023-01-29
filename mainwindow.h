@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <TCPClient/TCPClient.h>
 #include <QSettings>
+#include <displayeddata.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,12 +26,13 @@ private:
     TCPClient *tcpClient;
     QSettings *settings;
 
-    void SaveSettings(QString key, int index);
-    void RecalculateValue(QLabel *label, );
-private slots:
-    void ChangeScale();
+    DisplayedData* temperature;
+    DisplayedData* pressure;
+    DisplayedData* humidity;
 
-    void on_comboBox_2_currentIndexChanged(int index);
+private slots:
+    void SlotSaveSettings(QString key, int index);
+
 };
 
 #endif // MAINWINDOW_H

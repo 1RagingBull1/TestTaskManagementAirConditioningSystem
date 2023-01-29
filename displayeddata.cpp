@@ -1,7 +1,16 @@
 #include "displayeddata.h"
 
-DisplayedData::DisplayedData(QObject *parent)
-    : QObject{parent}
+
+DisplayedData::DisplayedData(QString sNameParameter, QComboBox *sComboBox, QLabel *sLabel, QObject *parent)
+{
+    nameParameter   = sNameParameter;
+    scaleComboBox   = sComboBox;
+    displaylabel    = sLabel;
+
+    //    connect(scaleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(SlotRefreshData(int)));
+}
+
+DisplayedData::~DisplayedData()
 {
 
 }
@@ -16,12 +25,7 @@ void DisplayedData::setRawData(int newRawData)
     rawData = newRawData;
 }
 
-const QString &DisplayedData::getNameParameter() const
+void DisplayedData::SlotRefreshData(int indx)
 {
-    return nameParameter;
-}
 
-void DisplayedData::setNameParameter(const QString &newNameParameter)
-{
-    nameParameter = newNameParameter;
 }
