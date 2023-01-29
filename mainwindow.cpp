@@ -3,13 +3,16 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), tcpClient(new TCPClient())
 {
     ui->setupUi(this);
+
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete  tcpClient;
 }
 
