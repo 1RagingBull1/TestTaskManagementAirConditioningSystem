@@ -36,7 +36,6 @@ void DisplayedData::setRawData(int newRawData)
 TempertureData::TempertureData(QComboBox *sComboBox, QLabel *sLabel, QObject *parent): DisplayedData(sComboBox,sLabel, parent)
 {
     nameParameter   = "temperature";
-    rawData = 10;
 }
 
 TempertureData::~TempertureData()
@@ -60,6 +59,64 @@ void TempertureData::SlotRefreshData(int indx)
         str.setNum(rawData + 273.15);
         break;
 
+    }
+    displaylabel->setText(str);
+}
+
+PressureData::PressureData(QComboBox *sComboBox, QLabel *sLabel, QObject *parent): DisplayedData(sComboBox,sLabel, parent)
+{
+        nameParameter   = "pressure";
+
+
+
+}
+
+PressureData::~PressureData()
+{
+
+}
+
+void PressureData::SlotRefreshData(int indx)
+{
+    QString str;
+    switch (indx) {
+    case 0:
+        str.setNum(rawData);
+        break;
+
+    case 1:
+        str.setNum(rawData * 133.3);
+        break;
+    }
+    displaylabel->setText(str);
+}
+
+
+
+HumidityData::HumidityData(QComboBox *sComboBox, QLabel *sLabel, QObject *parent): DisplayedData(sComboBox,sLabel, parent)
+{
+        nameParameter   = "HumidityData";
+
+
+
+}
+
+HumidityData::~HumidityData()
+{
+
+}
+
+void HumidityData::SlotRefreshData(int indx)
+{
+    QString str;
+    switch (indx) {
+    case 0:
+        str.setNum(rawData);
+        break;
+
+    case 1:
+        str.setNum(rawData * 133.3);
+        break;
     }
     displaylabel->setText(str);
 }

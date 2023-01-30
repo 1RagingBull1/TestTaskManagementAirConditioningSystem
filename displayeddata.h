@@ -42,10 +42,31 @@ public:
     ~TempertureData();
 
 
-    // DisplayedData interface
 public slots:
     void SlotRefreshData(int indx) override;
 };
 
+class PressureData : public DisplayedData
+{
+        Q_OBJECT
+public:
+    PressureData(QComboBox* sComboBox, QLabel* sLabel, QObject *parent = nullptr);
+    ~PressureData();
 
+
+public slots:
+    void SlotRefreshData(int indx) override;
+};
+
+class HumidityData : public DisplayedData
+{
+        Q_OBJECT
+public:
+    HumidityData(QComboBox* sComboBox, QLabel* sLabel, QObject *parent = nullptr);
+    ~HumidityData();
+
+
+public slots:
+    void SlotRefreshData(int indx) override;
+};
 #endif // DISPLAYEDDATA_H

@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     tcpClient->connectToServer();
 
     temperature = new TempertureData(ui->comboBox_2, ui->label_4, this);
-//    pressure = new DisplayedData(ui->comboBox_3, ui->label_6, this);
-//    humidity = new DisplayedData(ui->comboBox_4, ui->label_5, this);
+    pressure = new PressureData(ui->comboBox_3, ui->label_6, this);
+    humidity = new HumidityData(ui->comboBox_4, ui->label_5, this);
 
 
 
