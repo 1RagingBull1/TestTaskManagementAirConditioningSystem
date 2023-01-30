@@ -7,25 +7,23 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-//    temperature = new DisplayedData("temperature",ui->comboBox_2, ui->label_4,this);
-//    connect(temperature, &DisplayedData::sigSaveSettings, this, &MainWindow::SlotSaveSettings);
-//    temperature->SlotRefreshData(5);
-
-
     tcpClient->connectToServer();
+
+    temperature = new DisplayedData("temperature", ui->comboBox_2, ui->label_4, this);
+    pressure = new DisplayedData("pressure", ui->comboBox_3, ui->label_6, this);
+    humidity = new DisplayedData("humidity", ui->comboBox_4, ui->label_5, this);
+
 
 
     settings = new QSettings("settings.ini", QSettings::IniFormat);
     settings->beginGroup( "displayScale" );
     if(settings->contains("temperature")){// проверяю есть ли сохраненные настройки шкал отображения
-        this->ui->label->setText(settings->value( "temperature").toString());
-    }else{
-        settings->setValue( "temperature", 128 );
-        this->ui->label->setText("333");
+        this->ui->comboBox_2->setCurrentIndex(settings->value("temperature").toInt());
+        this->ui->comboBox_3->setCurrentIndex(settings->value("pressure").toInt());
     }
 
 
-//    connect(this->ui->comboBox, &QComboBox::currentIndexChanged, this, &MainWindow::ChangeScale);
+
 
 }
 
@@ -35,10 +33,9 @@ MainWindow::~MainWindow()
     delete  tcpClient;
 }
 
-void MainWindow::SlotSaveSettings(QString key, int index)
-{
-    settings->setValue(key, index);
+
+
+void MainWindow::closeEvent(QCloseEvent *event){
+    settings->setValue("temperature", ui->comboBox_2->currentIndex());
+    settings->setValue("pressure", ui->comboBox_3->currentIndex());
 }
-
-
-

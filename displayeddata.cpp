@@ -1,13 +1,14 @@
 #include "displayeddata.h"
 
 
-DisplayedData::DisplayedData(QString sNameParameter, QComboBox *sComboBox, QLabel *sLabel, QObject *parent)
+DisplayedData::DisplayedData(QString sNameParameter, QComboBox *sComboBox, QLabel *sLabel, QObject *parent):QObject(parent)
 {
     nameParameter   = sNameParameter;
     scaleComboBox   = sComboBox;
     displaylabel    = sLabel;
 
-    //    connect(scaleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(SlotRefreshData(int)));
+        connect(scaleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(SlotRefreshData(int)));
+
 }
 
 DisplayedData::~DisplayedData()
@@ -27,5 +28,8 @@ void DisplayedData::setRawData(int newRawData)
 
 void DisplayedData::SlotRefreshData(int indx)
 {
-
+    QString str;
+    str.setNum(indx);
+    displaylabel->setText(str);
+    emit sigSaveSettings();
 }

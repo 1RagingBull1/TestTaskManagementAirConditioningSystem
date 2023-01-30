@@ -30,8 +30,8 @@ private:
     DisplayedData* pressure;
     DisplayedData* humidity;
 
+    void closeEvent(QCloseEvent *event) override;
 private slots:
-    void SlotSaveSettings(QString key, int index);
 
 };
 
