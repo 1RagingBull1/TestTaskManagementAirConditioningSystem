@@ -10,7 +10,7 @@ class DisplayedData : public QObject
 {
     Q_OBJECT
 public:
-    DisplayedData(QString sNameParameter, QComboBox* sComboBox, QLabel* sLabel, QObject *parent = nullptr);
+    DisplayedData(QComboBox* sComboBox, QLabel* sLabel, QObject *parent = nullptr);
     ~DisplayedData();
 
     int getRawData() const;
@@ -18,17 +18,16 @@ public:
 
 
 
-    void setVecCoefScale(QVector<float> *newVecCoefScale);
-
-
-private:
-    int rawData = 0; // содержит сырые данные полученные от иммитатора
+protected:
     QString nameParameter; // содержит наименование отображаемого параметра
+    int rawData = 0; // содержит сырые данные полученные от иммитатора
     QComboBox* scaleComboBox;
     QLabel* displaylabel;
-    QVector<float>* vecCoefScale;
+
+private:
+//    virtual void RefreshData(int indx) = 0;
 public slots:
-    void SlotRefreshData(int indx);
+    virtual void  SlotRefreshData(int indx) = 0;
 signals:
 
 
@@ -37,7 +36,15 @@ signals:
 
 class TempertureData : public DisplayedData
 {
+        Q_OBJECT
+public:
+    TempertureData(QComboBox* sComboBox, QLabel* sLabel, QObject *parent = nullptr);
+    ~TempertureData();
 
+
+    // DisplayedData interface
+public slots:
+    void SlotRefreshData(int indx) override;
 };
 
 

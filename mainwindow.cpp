@@ -9,10 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     tcpClient->connectToServer();
 
-    temperature = new DisplayedData("temperature", ui->comboBox_2, ui->label_4, this);
-    QVector<float> vec = {0, };
-    pressure = new DisplayedData("pressure", ui->comboBox_3, ui->label_6, this);
-    humidity = new DisplayedData("humidity", ui->comboBox_4, ui->label_5, this);
+    temperature = new TempertureData(ui->comboBox_2, ui->label_4, this);
+//    pressure = new DisplayedData(ui->comboBox_3, ui->label_6, this);
+//    humidity = new DisplayedData(ui->comboBox_4, ui->label_5, this);
 
 
 

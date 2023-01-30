@@ -1,9 +1,9 @@
 #include "displayeddata.h"
 
 
-DisplayedData::DisplayedData(QString sNameParameter, QComboBox *sComboBox, QLabel *sLabel, QObject *parent):QObject(parent)
+DisplayedData::DisplayedData(QComboBox *sComboBox, QLabel *sLabel, QObject *parent):QObject(parent)
 {
-    nameParameter   = sNameParameter;
+
     scaleComboBox   = sComboBox;
     displaylabel    = sLabel;
 
@@ -26,14 +26,40 @@ void DisplayedData::setRawData(int newRawData)
     rawData = newRawData;
 }
 
-void DisplayedData::setVecCoefScale(QVector<float> *newVecCoefScale)
+//void DisplayedData::SlotRefreshData(int indx)
+//{
+//  RefreshData(indx);
+//}
+
+
+
+TempertureData::TempertureData(QComboBox *sComboBox, QLabel *sLabel, QObject *parent): DisplayedData(sComboBox,sLabel, parent)
 {
-    vecCoefScale = newVecCoefScale;
+    nameParameter   = "temperature";
+    rawData = 10;
 }
 
-void DisplayedData::SlotRefreshData(int indx)
+TempertureData::~TempertureData()
+{
+
+}
+
+void TempertureData::SlotRefreshData(int indx)
 {
     QString str;
-    str.setNum(indx);
+    switch (indx) {
+    case 0:
+        str.setNum(rawData);
+        break;
+
+    case 1:
+        str.setNum((rawData * 9/5) + 32);
+        break;
+
+    case 2:
+        str.setNum(rawData + 273.15);
+        break;
+
+    }
     displaylabel->setText(str);
 }
