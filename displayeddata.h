@@ -20,6 +20,7 @@ public:
 
     void setVecCoefScale(QVector<float> *newVecCoefScale);
 
+
 private:
     int rawData = 0; // содержит сырые данные полученные от иммитатора
     QString nameParameter; // содержит наименование отображаемого параметра
@@ -29,8 +30,15 @@ private:
 public slots:
     void SlotRefreshData(int indx);
 signals:
-    void sigSaveSettings();
+
 
 };
+
+
+class TempertureData : public DisplayedData
+{
+
+};
+
 
 #endif // DISPLAYEDDATA_H

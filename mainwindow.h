@@ -30,7 +30,7 @@ private:
     DisplayedData* pressure;
     DisplayedData* humidity;
 
-    void closeEvent(QCloseEvent *event) override;
+    void closeEvent(QCloseEvent *event) override; // переопределяем  метод - перехватывает закрытие окна и сохраняет настройки единиц измерения
 private slots:
 
 };

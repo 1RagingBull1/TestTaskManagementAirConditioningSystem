@@ -19,8 +19,8 @@
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>495</width>
-      <height>211</height>
+      <width>595</width>
+      <height>219</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -161,9 +161,6 @@
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
         <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="sizeConstraint">
-          <enum>QLayout::SetMaximumSize</enum>
-         </property>
          <item>
           <widget class="QCheckBox" name="checkBox">
            <property name="font">
@@ -265,7 +262,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

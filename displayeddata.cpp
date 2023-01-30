@@ -26,10 +26,14 @@ void DisplayedData::setRawData(int newRawData)
     rawData = newRawData;
 }
 
+void DisplayedData::setVecCoefScale(QVector<float> *newVecCoefScale)
+{
+    vecCoefScale = newVecCoefScale;
+}
+
 void DisplayedData::SlotRefreshData(int indx)
 {
     QString str;
     str.setNum(indx);
     displaylabel->setText(str);
-    emit sigSaveSettings();
 }
