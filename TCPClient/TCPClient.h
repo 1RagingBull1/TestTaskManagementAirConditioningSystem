@@ -11,13 +11,13 @@ class TCPClient:public QObject
         Q_OBJECT
 public:
     TCPClient();
+    void SendToServer(QString arr); // функция передачи данных серверу
 private slots:
 
 private:
     QTcpSocket *socket;
     QByteArray Data;
 
-    void SendToServer(QByteArray arr); // функция передачи данных серверу
     quint16 nextBlockSize = 0; // содержит объем отправляемого сообщения
 public slots:
     void slotReadyRead();

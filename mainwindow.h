@@ -23,7 +23,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    TCPClient *tcpClient;
+    TCPClient *clientToEmmitator;
     QSettings *settings;
 
     DisplayedData* temperature;
@@ -33,6 +33,7 @@ private:
     void closeEvent(QCloseEvent *event) override; // переопределяем  метод - перехватывает закрытие окна и сохраняет настройки единиц измерения
 private slots:
 
+    void on_checkBox_stateChanged(int arg1);
 };
 
 #endif // MAINWINDOW_H

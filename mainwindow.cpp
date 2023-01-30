@@ -3,11 +3,11 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow), tcpClient(new TCPClient())
+    , ui(new Ui::MainWindow), clientToEmmitator(new TCPClient())
 {
     ui->setupUi(this);
 
-    tcpClient->connectToServer();
+    clientToEmmitator->connectToServer();
 
     temperature = new TempertureData(ui->comboBox_2, ui->label_4, this);
     pressure = new PressureData(ui->comboBox_3, ui->label_6, this);
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete  tcpClient;
+    delete  clientToEmmitator;
 }
 
 
@@ -38,4 +38,10 @@ MainWindow::~MainWindow()
 void MainWindow::closeEvent(QCloseEvent *event){
     settings->setValue("temperature", ui->comboBox_2->currentIndex());
     settings->setValue("pressure", ui->comboBox_3->currentIndex());
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+//    QByteArray arr = (QByteArray)"test";
+    clientToEmmitator->SendToServer("first");
 }

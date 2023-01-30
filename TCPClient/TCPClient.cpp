@@ -7,7 +7,7 @@ TCPClient::TCPClient()
     connect(socket, &QTcpSocket::disconnected, this, &QTcpSocket::deleteLater);
 }
 
-void TCPClient::SendToServer(QByteArray arr)
+void TCPClient::SendToServer(QString arr)
 {
     Data.clear();
 
@@ -52,5 +52,5 @@ void TCPClient::slotReadyRead()
 
 void TCPClient::connectToServer()
 {
-      socket->connectToHost("192.168.0.1", 502); // создаем сокет который содержит адрес и порт сервера
+      socket->connectToHost("127.0.0.1", 2323); // создаем сокет который содержит адрес и порт сервера
 }
