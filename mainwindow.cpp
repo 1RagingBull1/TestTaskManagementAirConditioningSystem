@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    clientToEmmitator->connectToServer();
+    connect(clientToEmmitator, &TCPClient::SigRecivedMessage, this, &MainWindow::SlotSetRawDataTemp);
 
     temperature = new TempertureData(ui->comboBox_2, ui->label_4, this);
     pressure = new PressureData(ui->comboBox_3, ui->label_6, this);
@@ -40,8 +40,20 @@ void MainWindow::closeEvent(QCloseEvent *event){
     settings->setValue("pressure", ui->comboBox_3->currentIndex());
 }
 
+void MainWindow::SlotSetRawDataTemp(int var)
+{
+    temperature->setRawData(var);
+    temperature->RefreshDisplayedData();
+}
+
+
+
+void MainWindow::on_pushButton_clicked()
+{
+     clientToEmmitator->SendToServer(ui->temperSetpoint->text());
+}
+
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
-//    QByteArray arr = (QByteArray)"test";
-    clientToEmmitator->SendToServer("first");
+        clientToEmmitator->connectToServer();
 }

@@ -25,29 +25,28 @@ void TCPClient::SendToServer(QString arr)
 void TCPClient::slotReadyRead()
 {
     QDataStream in (socket);
-    in.setVersion(QDataStream::Qt_5_15);
-    if (in.status() == QDataStream::Ok) {
-        while(1){
-            if (nextBlockSize == 0) { // определяем известно ли нам сколько должно прийти байт. Это содержится в начале посылки первые 2 байта
-                if (socket->bytesAvailable() < 2) { //здесь контролируем что пришло миниум 2 байта, если нет то ждем когда придут первые 2 байта, чтобы узнать размер посылки
-                    break;
-                }
-                in>>nextBlockSize; // если пришли 2 байта, то записываем размер послыки в переменную
-            }
-            if(socket->bytesAvailable() < nextBlockSize){// сравниваем сколько пришло и сколько нужно байт
-                break;
-            }
+    in.setVersion(QDataStream::Qt_5_9);
+//    if (in.status() == QDataStream::Ok) {
+//        while(1){
+//            if (nextBlockSize == 0) { // определяем известно ли нам сколько должно прийти байт. Это содержится в начале посылки первые 2 байта
+//                if (socket->bytesAvailable() < 2) { //здесь контролируем что пришло миниум 2 байта, если нет то ждем когда придут первые 2 байта, чтобы узнать размер посылки
+//                    break;
+//                }
+//                in>>nextBlockSize; // если пришли 2 байта, то записываем размер послыки в переменную
+//            }
+//            if(socket->bytesAvailable() < nextBlockSize){// сравниваем сколько пришло и сколько нужно байт
+//                break;
+//            }
 
-            // дальше ведется запись в текст браузер
-//            QString str;
-//            in>>str;
-//            ui->textBrowser->append(str);
-//            nextBlockSize = 0;
-        }
-    } else {
-//        ui->textBrowser->append("read error");
 
-    }
+//        }
+//    }
+    nextBlockSize = 0;
+    int var;
+    QString str;
+    in>> str;
+    var = str.toInt();
+    emit SigRecivedMessage(var);
 }
 
 void TCPClient::connectToServer()

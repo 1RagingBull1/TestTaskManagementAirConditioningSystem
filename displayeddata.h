@@ -15,6 +15,7 @@ public:
 
     int getRawData() const;
     void setRawData(int newRawData);
+    void RefreshDisplayedData();
 
 
 
@@ -25,7 +26,7 @@ protected:
     QLabel* displaylabel;
 
 private:
-//    virtual void RefreshData(int indx) = 0;
+
 public slots:
     virtual void  SlotRefreshData(int indx) = 0;
 signals:

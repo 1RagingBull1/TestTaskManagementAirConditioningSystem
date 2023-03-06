@@ -26,12 +26,12 @@ void DisplayedData::setRawData(int newRawData)
     rawData = newRawData;
 }
 
-//void DisplayedData::SlotRefreshData(int indx)
-//{
-//  RefreshData(indx);
-//}
-
-
+void DisplayedData::RefreshDisplayedData()
+{
+    QString str;
+    str.setNum(getRawData());
+    displaylabel->setText(str);
+}
 
 TempertureData::TempertureData(QComboBox *sComboBox, QLabel *sLabel, QObject *parent): DisplayedData(sComboBox,sLabel, parent)
 {

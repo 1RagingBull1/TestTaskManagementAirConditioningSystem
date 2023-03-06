@@ -20,7 +20,7 @@
       <x>20</x>
       <y>30</y>
       <width>595</width>
-      <height>219</height>
+      <height>246</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -177,13 +177,24 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QSpinBox" name="temperSetpoint">
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>Задать</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QComboBox" name="comboBox">

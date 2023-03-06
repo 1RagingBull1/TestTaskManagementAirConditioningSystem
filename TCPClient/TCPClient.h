@@ -22,6 +22,8 @@ private:
 public slots:
     void slotReadyRead();
     void connectToServer();
+signals:
+    void SigRecivedMessage(int);
 };
 
 #endif // TCPCLIENT_H

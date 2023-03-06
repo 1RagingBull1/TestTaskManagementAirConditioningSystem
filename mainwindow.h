@@ -33,6 +33,9 @@ private:
     void closeEvent(QCloseEvent *event) override; // переопределяем  метод - перехватывает закрытие окна и сохраняет настройки единиц измерения
 private slots:
 
+
+    void SlotSetRawDataTemp(int var);
+    void on_pushButton_clicked();
     void on_checkBox_stateChanged(int arg1);
 };
 
